@@ -481,7 +481,7 @@
                 </button>
 
                 <nav class="nav-links" id="navLinks">
-                    <a href="#home">Home</a>
+                    <!-- 'Home' 섹션 제거에 따라 네비게이션 링크에서 #home 제거 -->
                     <a href="#about">About Me</a>
                     <a href="#energy">Energy</a>
                     <a href="#health">Health</a>
@@ -495,31 +495,15 @@
     </header>
 
     <main>
-        <!-- Home / Hero Section (기존 유지) -->
-        <section id="home">
-            <div class="container">
-                <div class="featured-post">
-                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="Coding on Monitor" class="featured-image">
-                    <div class="featured-content">
-                        <span class="tag" style="display: inline-block; padding: 0.25rem 0.75rem; background-color: var(--primary-color); color: white; border-radius: 999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">Featured Post</span>
-                        <h1 class="featured-title">Static Web Hosting with GitHub Pages</h1>
-                        <p style="color: var(--secondary-color); margin-bottom: 1.5rem;">
-                            GitHub Pages를 활용하여 서버 없이 정적 웹사이트를 무료로 호스팅하는 방법과
-                            Jekyll, Hexo 같은 정적 사이트 생성기에 대해 알아봅니다.
-                        </p>
-                        <a href="#tech" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background-color: var(--primary-color); color: white; border-radius: 0.5rem; font-weight: 600; transition: opacity 0.2s;" class="btn">Read Article</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        <!-- Home / Hero Section (제거됨) -->
+        
         <!-- About Me Section (요청하신 이메일 복사 기능 추가) -->
         <section id="about" style="background-color: var(--card-bg);">
             <div class="container">
                 <h2 class="section-title">About <span>Me</span></h2>
                 <div class="about-wrapper">
                     <!-- 프로필 이미지 (my_profile.jpg가 없으면 'W' 이니셜 표시) -->
-                    <img src="./my_profile.jpg" alt="Won Il Profile" class="profile-img">
+                    <img src="./my_profile.jpg" onerror="this.onerror=null; this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';" alt="Won Il Profile" class="profile-img">
                     <div class="about-text">
                         <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Hello, I'm Won Il 👋</h3>
                         <p style="color: var(--secondary-color); margin-bottom: 1.5rem;">
@@ -554,7 +538,8 @@
                 <div class="post-grid">
                     <!-- Energy Post 1: 원자력 기초 -->
                     <article class="card">
-                        <img src="https://images.unsplash.com/photo-1621934989601-5256e017646a?auto=format&fit=crop&w=600&q=80" alt="Nuclear Power Plant" class="card-image">
+                        <!-- 이미지 경로 수정: energy_nuclear_basic.jpg -->
+                        <img src="./energy_nuclear_basic.jpg" alt="Nuclear Power Plant" class="card-image">
                         <div class="card-content">
                             <span class="card-date">2023. 12. 25</span>
                             <h3 class="card-title">원자력 발전의 기본 원리</h3>
@@ -563,7 +548,8 @@
                     </article>
                     <!-- Energy Post 2: 신재생 에너지 -->
                     <article class="card">
-                        <img src="https://images.unsplash.com/photo-1596707323145-2e63a13d7124?auto=format&fit=crop&w=600&q=80" alt="Solar Panels and Wind Turbines" class="card-image">
+                        <!-- 이미지 경로 수정: energy_renewable_trend.jpg -->
+                        <img src="./energy_renewable_trend.jpg" alt="Solar Panels and Wind Turbines" class="card-image">
                         <div class="card-content">
                             <span class="card-date">2024. 01. 10</span>
                             <h3 class="card-title">태양광과 풍력, 신재생 에너지 동향</h3>
@@ -572,7 +558,8 @@
                     </article>
                     <!-- Energy Post 3: SMR 트렌드 -->
                     <article class="card">
-                        <img src="https://images.unsplash.com/photo-1621640954930-588b3941785f?auto=format&fit=crop&w=600&q=80" alt="Small Modular Reactor Concept" class="card-image">
+                        <!-- 이미지 경로 수정: energy_smr_trend.jpg -->
+                        <img src="./energy_smr_trend.jpg" alt="Small Modular Reactor Concept" class="card-image">
                         <div class="card-content">
                             <span class="card-date">2024. 02. 01</span>
                             <h3 class="card-title">미래 에너지, SMR(소형모듈원전) 트렌드</h3>
@@ -590,7 +577,8 @@
                 
                 <!-- Health Card 1: 수평 레이아웃 -->
                 <article class="horizontal-card">
-                    <img src="https://images.unsplash.com/photo-1542841630-f4639446d338?auto=format&fit=crop&w=600&q=80" alt="Healthy Food Plate" class="horizontal-card-image">
+                    <!-- 이미지 경로 수정: health_fermented_food.jpg -->
+                    <img src="./health_fermented_food.jpg" alt="Healthy Food Plate" class="horizontal-card-image">
                     <div class="horizontal-card-content">
                         <h3 class="card-title">장 건강을 위한 발효 음식 섭취</h3>
                         <p class="card-excerpt">김치, 요거트 등 발효 식품이 장내 미생물 균형에 미치는 긍정적인 영향과 일상 식단에 포함하는 방법.</p>
@@ -600,7 +588,8 @@
 
                 <!-- Health Card 2: 수평 레이아웃 -->
                 <article class="horizontal-card">
-                    <img src="https://images.unsplash.com/photo-1579126315570-58444a84d470?auto=format&fit=crop&w=600&q=80" alt="Stretching Exercises" class="horizontal-card-image">
+                    <!-- 이미지 경로 수정: health_stretching.jpg -->
+                    <img src="./health_stretching.jpg" alt="Stretching Exercises" class="horizontal-card-image">
                     <div class="horizontal-card-content">
                         <h3 class="card-title">사무실에서의 간단한 스트레칭 루틴</h3>
                         <p class="card-excerpt">장시간 앉아 있는 직장인을 위한 5분 스트레칭. 목, 어깨, 허리 통증을 예방하는 동작 가이드.</p>
