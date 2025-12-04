@@ -206,9 +206,10 @@
 
         .card-image {
             width: 100%;
-            /* **수정됨:** 이미지 높이를 250px에서 350px로 다시 늘려 잘림 현상 완화 */
+            /* 이미지가 잘리지 않도록 높이 350px 유지 및 object-fit: contain으로 변경 */
             height: 350px; 
-            object-fit: cover;
+            object-fit: contain; /* **수정됨:** 이미지가 잘리지 않고 전체가 보이도록 contain으로 변경 */
+            background-color: var(--border-color); /* 이미지를 담는 배경색 추가 (contain시 생기는 여백 채우기) */
         }
 
         .card-content {
