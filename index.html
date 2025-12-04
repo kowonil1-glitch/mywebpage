@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Won Il | Dev & Design Log</title>
+    <title>Won Il | Dev & Log</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +21,7 @@
             --bg-color: #ffffff;
             --text-color: #1f2937;
             --primary-color: #3b82f6; /* Blue */
+            --primary-hover: #2563eb;
             --secondary-color: #64748b;
             --card-bg: #f8fafc;
             --border-color: #e2e8f0;
@@ -34,6 +35,7 @@
             --bg-color: #0f172a;
             --text-color: #f1f5f9;
             --primary-color: #60a5fa;
+            --primary-hover: #3b82f6;
             --secondary-color: #94a3b8;
             --card-bg: #1e293b;
             --border-color: #334155;
@@ -159,7 +161,7 @@
             color: var(--primary-color);
         }
 
-        /* --- Home / Featured Post --- */
+        /* --- Featured Post (Hero) --- */
         .featured-post {
             display: flex;
             align-items: center;
@@ -182,47 +184,13 @@
             padding: 2rem;
         }
 
-        .tag {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .featured-title {
-            font-size: 2.25rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            transition: opacity 0.2s;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        /* --- Grid Layouts (Tech & Design) --- */
+        /* --- Grid Layouts (Tech & Design & Energy) --- */
         .post-grid {
             display: grid;
             gap: 2rem;
-            /* Default: Mobile (1 column) is handled by grid default, 
-               but we set breakpoints below */
         }
-
+        
+        /* General Card Style */
         .card {
             background-color: var(--card-bg);
             border-radius: 0.75rem;
@@ -233,7 +201,7 @@
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         .card-image {
@@ -244,13 +212,6 @@
 
         .card-content {
             padding: 1.5rem;
-        }
-
-        .card-date {
-            font-size: 0.875rem;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-            display: block;
         }
 
         .card-title {
@@ -264,7 +225,7 @@
             font-size: 0.95rem;
         }
 
-        /* --- About Section --- */
+        /* --- About Section Specific Styles --- */
         .about-wrapper {
             display: flex;
             align-items: center;
@@ -281,25 +242,125 @@
             border: 4px solid var(--primary-color);
         }
 
+        /* Styling for 'W' initial if image is not loaded */
+        .profile-img:not([src]):after {
+            content: "W";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            font-weight: 700;
+            color: white;
+            background-color: var(--primary-color);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
         .about-text {
             max-width: 500px;
         }
 
-        .social-links {
-            margin-top: 1.5rem;
+        .email-copy-wrapper {
             display: flex;
-            gap: 1rem;
+            align-items: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap; /* 모바일 대응 */
         }
 
-        .social-links a {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            transition: color 0.2s;
+        .btn-copy {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem; /* 모바일 대응 */
         }
 
-        .social-links a:hover {
+        .btn-copy:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* --- Health Section (Horizontal Card) --- */
+        .horizontal-card {
+            display: flex;
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            background-color: var(--card-bg);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .horizontal-card-image {
+            width: 35%; /* 이미지 영역 비율 */
+            min-height: 250px;
+            object-fit: cover;
+        }
+
+        .horizontal-card-content {
+            width: 65%; /* 텍스트 영역 비율 */
+            padding: 2rem;
+        }
+
+        /* --- Hobby Section (Icon Grid) --- */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 모바일 기본 2열 */
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .hobby-item {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .hobby-item:hover {
+            transform: scale(1.05);
+        }
+
+        .hobby-item i {
+            font-size: 3rem;
             color: var(--primary-color);
+            margin-bottom: 0.5rem;
         }
+
+        .hobby-item p {
+            font-weight: 600;
+        }
+
+        /* --- Toast Notification Style (For Email Copy) --- */
+        .toast-notification {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background-color: #10b981; /* Green color for success */
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+            transform: translateY(-20px);
+            z-index: 2000;
+            font-weight: 600;
+        }
+
+        .toast-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
 
         /* =========================================
            4. Footer
@@ -321,6 +382,12 @@
             .post-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .horizontal-card-image {
+                width: 30%;
+            }
+            .horizontal-card-content {
+                width: 70%;
+            }
         }
 
         /* Desktop Breakpoint */
@@ -328,12 +395,16 @@
             .post-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+            .icon-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         /* Mobile Adjustments */
         @media (max-width: 768px) {
+            /* Navbar */
             .nav-links {
-                display: none; /* Hide nav on mobile initially */
+                display: none; 
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -353,6 +424,7 @@
                 display: block;
             }
 
+            /* Main Layouts */
             .featured-post {
                 flex-direction: column;
             }
@@ -362,15 +434,39 @@
                 height: 250px;
             }
 
+            /* About */
             .about-wrapper {
                 flex-direction: column;
                 text-align: center;
                 gap: 2rem;
             }
+
+            /* Horizontal Card */
+            .horizontal-card {
+                flex-direction: column; /* 세로로 쌓기 */
+            }
+            .horizontal-card-image {
+                width: 100%;
+                height: 200px;
+            }
+            .horizontal-card-content {
+                width: 100%;
+                padding: 1.5rem;
+            }
+            
+            /* Hobby Grid */
+            .icon-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Toast Notification Element -->
+    <div id="toastNotification" class="toast-notification">
+        이메일 주소가 클립보드에 복사되었습니다!
+    </div>
 
     <!-- Header -->
     <header>
@@ -386,9 +482,10 @@
 
                 <nav class="nav-links" id="navLinks">
                     <a href="#home">Home</a>
-                    <a href="#tech">Tech</a>
-                    <a href="#design">Design</a>
-                    <a href="#about">About</a>
+                    <a href="#about">About Me</a>
+                    <a href="#energy">Energy</a>
+                    <a href="#health">Health</a>
+                    <a href="#hobby">Hobby</a>
                     <button class="theme-toggle" onclick="toggleTheme()">
                         <i class="fa-solid fa-moon"></i>
                     </button>
@@ -398,109 +495,30 @@
     </header>
 
     <main>
-        <!-- Home / Hero Section -->
+        <!-- Home / Hero Section (기존 유지) -->
         <section id="home">
             <div class="container">
                 <div class="featured-post">
-                    <!-- Updated with a real coding image -->
                     <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="Coding on Monitor" class="featured-image">
                     <div class="featured-content">
-                        <span class="tag">Featured Post</span>
+                        <span class="tag" style="display: inline-block; padding: 0.25rem 0.75rem; background-color: var(--primary-color); color: white; border-radius: 999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">Featured Post</span>
                         <h1 class="featured-title">Static Web Hosting with GitHub Pages</h1>
                         <p style="color: var(--secondary-color); margin-bottom: 1.5rem;">
                             GitHub Pages를 활용하여 서버 없이 정적 웹사이트를 무료로 호스팅하는 방법과
                             Jekyll, Hexo 같은 정적 사이트 생성기에 대해 알아봅니다.
                         </p>
-                        <a href="#tech" class="btn">Read Article</a>
+                        <a href="#tech" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background-color: var(--primary-color); color: white; border-radius: 0.5rem; font-weight: 600; transition: opacity 0.2s;" class="btn">Read Article</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Tech Section -->
-        <section id="tech">
-            <div class="container">
-                <h2 class="section-title">Latest in <span>Tech</span></h2>
-                <div class="post-grid">
-                    <!-- Post 1 -->
-                    <article class="card">
-                        <!-- Updated: Coding/React Concept -->
-                        <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=600&q=80" alt="Code Screen" class="card-image">
-                        <div class="card-content">
-                            <span class="card-date">2023. 12. 05</span>
-                            <h3 class="card-title">React Hooks Deep Dive</h3>
-                            <p class="card-excerpt">useEffect와 useState의 올바른 사용법과 성능 최적화를 위한 팁을 공유합니다.</p>
-                        </div>
-                    </article>
-                    <!-- Post 2 -->
-                    <article class="card">
-                        <!-- Updated: Modern Tech Abstract -->
-                        <img src="https://images.unsplash.com/photo-1629904853716-64f95ef1fd69?auto=format&fit=crop&w=600&q=80" alt="Tech Abstract" class="card-image">
-                        <div class="card-content">
-                            <span class="card-date">2023. 11. 20</span>
-                            <h3 class="card-title">Next.js 14 살펴보기</h3>
-                            <p class="card-excerpt">App Router의 도입과 서버 컴포넌트가 가져올 프론트엔드 개발의 변화.</p>
-                        </div>
-                    </article>
-                    <!-- Post 3 -->
-                    <article class="card">
-                        <!-- Updated: CSS/Design Layout -->
-                        <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?auto=format&fit=crop&w=600&q=80" alt="Design Layout" class="card-image">
-                        <div class="card-content">
-                            <span class="card-date">2023. 11. 01</span>
-                            <h3 class="card-title">CSS 유틸리티 클래스의 장점</h3>
-                            <p class="card-excerpt">Tailwind CSS를 사용하여 개발 속도를 2배로 높이는 방법과 유지보수 전략.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Design Section -->
-        <section id="design">
-            <div class="container">
-                <h2 class="section-title">Design <span>Insights</span></h2>
-                <div class="post-grid">
-                    <!-- Post 4 -->
-                    <article class="card">
-                        <!-- Updated: UI/UX Wireframe -->
-                        <img src="https://images.unsplash.com/photo-1586717791821-3f44a5638d0f?auto=format&fit=crop&w=600&q=80" alt="UI Design" class="card-image">
-                        <div class="card-content">
-                            <span class="card-date">2023. 12. 10</span>
-                            <h3 class="card-title">2025 UI 디자인 트렌드</h3>
-                            <p class="card-excerpt">Bento Grids, Glassmorphism 등 올해 주목해야 할 디자인 패턴 분석.</p>
-                        </div>
-                    </article>
-                    <!-- Post 5 -->
-                    <article class="card">
-                        <!-- Updated: Typography -->
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80" alt="Typography" class="card-image">
-                        <div class="card-content">
-                            <span class="card-date">2023. 11. 15</span>
-                            <h3 class="card-title">가독성을 높이는 타이포그래피</h3>
-                            <p class="card-excerpt">웹 폰트 선택 가이드와 Line-height, Letter-spacing의 황금 비율.</p>
-                        </div>
-                    </article>
-                    <!-- Post 6 -->
-                    <article class="card">
-                        <!-- Updated: Color Palette -->
-                        <img src="https://images.unsplash.com/photo-1502691876148-a84978e59af8?auto=format&fit=crop&w=600&q=80" alt="Color Theory" class="card-image">
-                        <div class="card-content">
-                            <span class="card-date">2023. 10. 28</span>
-                            <h3 class="card-title">다크 모드를 위한 컬러 팔레트</h3>
-                            <p class="card-excerpt">눈이 편안하면서도 브랜드 아이덴티티를 잃지 않는 다크 모드 색상 배합법.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
+        <!-- About Me Section (요청하신 이메일 복사 기능 추가) -->
         <section id="about" style="background-color: var(--card-bg);">
             <div class="container">
                 <h2 class="section-title">About <span>Me</span></h2>
                 <div class="about-wrapper">
-                    <!-- TODO: 프로필 이미지 경로를 변경하려면 아래 src 속성 값을 실제 업로드한 파일 경로로 수정하세요. -->
+                    <!-- 프로필 이미지 (my_profile.jpg가 없으면 'W' 이니셜 표시) -->
                     <img src="./my_profile.jpg" alt="Won Il Profile" class="profile-img">
                     <div class="about-text">
                         <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Hello, I'm Won Il 👋</h3>
@@ -509,18 +527,117 @@
                             사용자 경험을 최우선으로 생각하며, 깔끔하고 직관적인 코드를 작성하기 위해 노력합니다.
                             이곳에서 저의 학습 기록과 프로젝트를 공유합니다.
                         </p>
+                        
+                        <!-- 이메일 복사 버튼 영역 -->
+                        <div class="email-copy-wrapper">
+                            <p style="margin-right: 1rem; font-weight: 600;">Email:</p>
+                            <p id="emailAddress" style="color: var(--secondary-color); margin-right: 1rem;">kowonil1@gmail.com</p>
+                            <button id="copyEmailBtn" class="btn-copy">
+                                <i class="fa-solid fa-copy"></i> 복사하기
+                            </button>
+                        </div>
+                        
                         <div class="social-links">
                             <a href="https://github.com/kowonil1-glitch" target="_blank" title="GitHub">
                                 <i class="fa-brands fa-github"></i>
-                            </a>
-                            <a href="mailto:kowonil1@gmail.com" title="Email">
-                                <i class="fa-solid fa-envelope"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- 원자력과 신재생 에너지 섹션 (#energy) -->
+        <section id="energy">
+            <div class="container">
+                <h2 class="section-title">Energy <span>Insights</span></h2>
+                <div class="post-grid">
+                    <!-- Energy Post 1: 원자력 기초 -->
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1621934989601-5256e017646a?auto=format&fit=crop&w=600&q=80" alt="Nuclear Power Plant" class="card-image">
+                        <div class="card-content">
+                            <span class="card-date">2023. 12. 25</span>
+                            <h3 class="card-title">원자력 발전의 기본 원리</h3>
+                            <p class="card-excerpt">핵분열 반응부터 전력 생산까지, 원자력 발전의 핵심 메커니즘을 쉽게 이해합니다.</p>
+                        </div>
+                    </article>
+                    <!-- Energy Post 2: 신재생 에너지 -->
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1596707323145-2e63a13d7124?auto=format&fit=crop&w=600&q=80" alt="Solar Panels and Wind Turbines" class="card-image">
+                        <div class="card-content">
+                            <span class="card-date">2024. 01. 10</span>
+                            <h3 class="card-title">태양광과 풍력, 신재생 에너지 동향</h3>
+                            <p class="card-excerpt">글로벌 신재생 에너지 시장의 성장세와 기술적 과제를 분석합니다.</p>
+                        </div>
+                    </article>
+                    <!-- Energy Post 3: SMR 트렌드 -->
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1621640954930-588b3941785f?auto=format&fit=crop&w=600&q=80" alt="Small Modular Reactor Concept" class="card-image">
+                        <div class="card-content">
+                            <span class="card-date">2024. 02. 01</span>
+                            <h3 class="card-title">미래 에너지, SMR(소형모듈원전) 트렌드</h3>
+                            <p class="card-excerpt">차세대 원전으로 주목받는 SMR의 기술적 장점과 상용화 전망.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 건강 상식 섹션 (#health) -->
+        <section id="health" style="background-color: var(--card-bg);">
+            <div class="container">
+                <h2 class="section-title">Daily <span>Health</span> Tips</h2>
+                
+                <!-- Health Card 1: 수평 레이아웃 -->
+                <article class="horizontal-card">
+                    <img src="https://images.unsplash.com/photo-1542841630-f4639446d338?auto=format&fit=crop&w=600&q=80" alt="Healthy Food Plate" class="horizontal-card-image">
+                    <div class="horizontal-card-content">
+                        <h3 class="card-title">장 건강을 위한 발효 음식 섭취</h3>
+                        <p class="card-excerpt">김치, 요거트 등 발효 식품이 장내 미생물 균형에 미치는 긍정적인 영향과 일상 식단에 포함하는 방법.</p>
+                        <p style="font-size: 0.875rem; color: var(--primary-color); margin-top: 1rem;">#프로바이오틱스 #식이섬유</p>
+                    </div>
+                </article>
+
+                <!-- Health Card 2: 수평 레이아웃 -->
+                <article class="horizontal-card">
+                    <img src="https://images.unsplash.com/photo-1579126315570-58444a84d470?auto=format&fit=crop&w=600&q=80" alt="Stretching Exercises" class="horizontal-card-image">
+                    <div class="horizontal-card-content">
+                        <h3 class="card-title">사무실에서의 간단한 스트레칭 루틴</h3>
+                        <p class="card-excerpt">장시간 앉아 있는 직장인을 위한 5분 스트레칭. 목, 어깨, 허리 통증을 예방하는 동작 가이드.</p>
+                        <p style="font-size: 0.875rem; color: var(--primary-color); margin-top: 1rem;">#자세교정 #피로해소</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 취미 섹션 (#hobby) -->
+        <section id="hobby">
+            <div class="container">
+                <h2 class="section-title">My <span>Hobbies</span></h2>
+                <div class="icon-grid">
+                    <div class="hobby-item">
+                        <i class="fa-solid fa-camera"></i>
+                        <p>사진 촬영</p>
+                    </div>
+                    <div class="hobby-item">
+                        <i class="fa-solid fa-guitar"></i>
+                        <p>기타 연주</p>
+                    </div>
+                    <div class="hobby-item">
+                        <i class="fa-solid fa-chess"></i>
+                        <p>체스</p>
+                    </div>
+                    <div class="hobby-item">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                        <p>독서</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 기존 Tech/Design 섹션은 삭제하고 새로운 섹션으로 대체함 -->
+
     </main>
 
     <!-- Footer -->
@@ -532,7 +649,6 @@
             </p>
             <div class="social-links" style="justify-content: center; font-size: 1.2rem;">
                 <a href="https://github.com/kowonil1-glitch" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="mailto:kowonil1@gmail.com"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </footer>
@@ -578,7 +694,7 @@
         // 3. Dynamic Year in Footer
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // 4. Smooth Scroll Handling (Optional Enhancement)
+        // 4. Smooth Scroll Handling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -594,6 +710,47 @@
                     });
                 }
             });
+        });
+
+        // 5. Email Copy Logic (요청하신 복사 및 알림 기능)
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        const emailAddress = document.getElementById('emailAddress').textContent.trim();
+        const toastNotification = document.getElementById('toastNotification');
+
+        copyEmailBtn.addEventListener('click', async () => {
+            // navigator.clipboard.writeText를 사용하여 클립보드에 복사
+            try {
+                await navigator.clipboard.writeText(emailAddress);
+                
+                // 성공 알림 표시 (Toast Notification)
+                toastNotification.classList.add('show');
+                setTimeout(() => {
+                    toastNotification.classList.remove('show');
+                }, 3000); // 3초 후 사라짐
+
+            } catch (err) {
+                // 복사 권한이 없을 경우 (예: 일부 브라우저, HTTP 환경)
+                console.error('클립보드 복사 실패:', err);
+                // 대안: 오래된 execCommand 사용 (보안상의 이유로 작동하지 않을 수도 있음)
+                try {
+                    const tempInput = document.createElement('textarea');
+                    tempInput.value = emailAddress;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+                    
+                    toastNotification.textContent = "이메일 주소가 복사되었습니다! (Fallback)";
+                    toastNotification.classList.add('show');
+                    setTimeout(() => {
+                        toastNotification.classList.remove('show');
+                        toastNotification.textContent = "이메일 주소가 클립보드에 복사되었습니다!"; // 메시지 초기화
+                    }, 3000);
+                } catch (err2) {
+                    console.error('Fallback 복사 실패:', err2);
+                    alert('복사 기능이 지원되지 않습니다. 이메일 주소를 직접 복사해 주세요: ' + emailAddress);
+                }
+            }
         });
     </script>
 </body>
