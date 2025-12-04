@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Won Il | Dev & Design Log</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Styles (style.css 역할) -->
+    <style>
+        /* =========================================
+           1. CSS Variables & Reset
+           ========================================= */
+        :root {
+            /* Light Mode Colors */
+            --bg-color: #ffffff;
+            --text-color: #1f2937;
+            --primary-color: #3b82f6; /* Blue */
+            --secondary-color: #64748b;
+            --card-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode Colors */
+            --bg-color: #0f172a;
+            --text-color: #f1f5f9;
+            --primary-color: #60a5fa;
+            --secondary-color: #94a3b8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --nav-bg: rgba(15, 23, 42, 0.9);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* =========================================
+           2. Header & Navigation
+           ========================================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--secondary-color);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-color);
+        }
+
+        /* =========================================
+           3. Sections
+           ========================================= */
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        /* --- Home / Featured Post --- */
+        .featured-post {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .featured-image {
+            flex: 1;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .featured-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* --- Grid Layouts (Tech & Design) --- */
+        .post-grid {
+            display: grid;
+            gap: 2rem;
+            /* Default: Mobile (1 column) is handled by grid default, 
+               but we set breakpoints below */
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-date {
+            font-size: 0.875rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-excerpt {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+        }
+
+        /* --- About Section --- */
+        .about-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            text-align: left;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+        }
+
+        .about-text {
+            max-width: 500px;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* =========================================
+           4. Footer
+           ========================================= */
+        footer {
+            background-color: var(--card-bg);
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            margin-top: auto;
+        }
+
+        /* =========================================
+           5. Responsive Design (Media Queries)
+           ========================================= */
+        
+        /* Tablet Breakpoint */
+        @media (min-width: 768px) {
+            .post-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop Breakpoint */
+        @media (min-width: 1024px) {
+            .post-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide nav on mobile initially */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--card-bg);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .featured-post {
+                flex-direction: column;
+            }
+
+            .featured-image {
+                width: 100%;
+                height: 250px;
+            }
+
+            .about-wrapper {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="logo">
+                    <i class="fa-solid fa-code"></i> Won Il
+                </a>
+                
+                <button class="mobile-menu-btn" onclick="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <nav class="nav-links" id="navLinks">
+                    <a href="#home">Home</a>
+                    <a href="#tech">Tech</a>
+                    <a href="#design">Design</a>
+                    <a href="#about">About</a>
+                    <button class="theme-toggle" onclick="toggleTheme()">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home / Hero Section -->
+        <section id="home">
+            <div class="container">
+                <div class="featured-post">
+                    <!-- Updated with a real coding image -->
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="Coding on Monitor" class="featured-image">
+                    <div class="featured-content">
+                        <span class="tag">Featured Post</span>
+                        <h1 class="featured-title">Static Web Hosting with GitHub Pages</h1>
+                        <p style="color: var(--secondary-color); margin-bottom: 1.5rem;">
+                            GitHub Pages를 활용하여 서버 없이 정적 웹사이트를 무료로 호스팅하는 방법과
+                            Jekyll, Hexo 같은 정적 사이트 생성기에 대해 알아봅니다.
+                        </p>
+                        <a href="#tech" class="btn">Read Article</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Section -->
+        <section id="tech">
+            <div class="container">
+                <h2 class="section-title">Latest in <span>Tech</span></h2>
+                <div class="post-grid">
+                    <!-- Post 1 -->
+                    <article class="card">
+                        <!-- Updated: Coding/React Concept -->
+                        <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=600&q=80" alt="Code Screen" class="card-image">
+                        <div class="card-content">
+                            <span class="card-date">2023. 12. 05</span>
+                            <h3 class="card-title">React Hooks Deep Dive</h3>
+                            <p class="card-excerpt">useEffect와 useState의 올바른 사용법과 성능 최적화를 위한 팁을 공유합니다.</p>
+                        </div>
+                    </article>
+                    <!-- Post 2 -->
+                    <article class="card">
+                        <!-- Updated: Modern Tech Abstract -->
+                        <img src="https://images.unsplash.com/photo-1629904853716-64f95ef1fd69?auto=format&fit=crop&w=600&q=80" alt="Tech Abstract" class="card-image">
+                        <div class="card-content">
+                            <span class="card-date">2023. 11. 20</span>
+                            <h3 class="card-title">Next.js 14 살펴보기</h3>
+                            <p class="card-excerpt">App Router의 도입과 서버 컴포넌트가 가져올 프론트엔드 개발의 변화.</p>
+                        </div>
+                    </article>
+                    <!-- Post 3 -->
+                    <article class="card">
+                        <!-- Updated: CSS/Design Layout -->
+                        <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?auto=format&fit=crop&w=600&q=80" alt="Design Layout" class="card-image">
+                        <div class="card-content">
+                            <span class="card-date">2023. 11. 01</span>
+                            <h3 class="card-title">CSS 유틸리티 클래스의 장점</h3>
+                            <p class="card-excerpt">Tailwind CSS를 사용하여 개발 속도를 2배로 높이는 방법과 유지보수 전략.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Section -->
+        <section id="design">
+            <div class="container">
+                <h2 class="section-title">Design <span>Insights</span></h2>
+                <div class="post-grid">
+                    <!-- Post 4 -->
+                    <article class="card">
+                        <!-- Updated: UI/UX Wireframe -->
+                        <img src="https://images.unsplash.com/photo-1586717791821-3f44a5638d0f?auto=format&fit=crop&w=600&q=80" alt="UI Design" class="card-image">
+                        <div class="card-content">
+                            <span class="card-date">2023. 12. 10</span>
+                            <h3 class="card-title">2025 UI 디자인 트렌드</h3>
+                            <p class="card-excerpt">Bento Grids, Glassmorphism 등 올해 주목해야 할 디자인 패턴 분석.</p>
+                        </div>
+                    </article>
+                    <!-- Post 5 -->
+                    <article class="card">
+                        <!-- Updated: Typography -->
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80" alt="Typography" class="card-image">
+                        <div class="card-content">
+                            <span class="card-date">2023. 11. 15</span>
+                            <h3 class="card-title">가독성을 높이는 타이포그래피</h3>
+                            <p class="card-excerpt">웹 폰트 선택 가이드와 Line-height, Letter-spacing의 황금 비율.</p>
+                        </div>
+                    </article>
+                    <!-- Post 6 -->
+                    <article class="card">
+                        <!-- Updated: Color Palette -->
+                        <img src="https://images.unsplash.com/photo-1502691876148-a84978e59af8?auto=format&fit=crop&w=600&q=80" alt="Color Theory" class="card-image">
+                        <div class="card-content">
+                            <span class="card-date">2023. 10. 28</span>
+                            <h3 class="card-title">다크 모드를 위한 컬러 팔레트</h3>
+                            <p class="card-excerpt">눈이 편안하면서도 브랜드 아이덴티티를 잃지 않는 다크 모드 색상 배합법.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" style="background-color: var(--card-bg);">
+            <div class="container">
+                <h2 class="section-title">About <span>Me</span></h2>
+                <div class="about-wrapper">
+                    <!-- Updated: Profile Person Image -->
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80" alt="Won Il Profile" class="profile-img">
+                    <div class="about-text">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Hello, I'm Won Il 👋</h3>
+                        <p style="color: var(--secondary-color); margin-bottom: 1.5rem;">
+                            웹 기술과 디자인의 교차점에 관심이 많은 개발자입니다. 
+                            사용자 경험을 최우선으로 생각하며, 깔끔하고 직관적인 코드를 작성하기 위해 노력합니다.
+                            이곳에서 저의 학습 기록과 프로젝트를 공유합니다.
+                        </p>
+                        <div class="social-links">
+                            <a href="https://github.com/kowonil1-glitch" target="_blank" title="GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="mailto:kowonil1@gmail.com" title="Email">
+                                <i class="fa-solid fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div style="font-weight: 700; font-size: 1.25rem; margin-bottom: 1rem;">Won Il</div>
+            <p style="color: var(--secondary-color); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                © <span id="year"></span> Won Il. All rights reserved.
+            </p>
+            <div class="social-links" style="justify-content: center; font-size: 1.2rem;">
+                <a href="https://github.com/kowonil1-glitch" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:kowonil1@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script (script.js 역할) -->
+    <script>
+        // 1. Mobile Menu Toggle Logic
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // 2. Dark Mode Toggle Logic
+        const themeToggleBtn = document.querySelector('.theme-toggle');
+        const icon = themeToggleBtn.querySelector('i');
+
+        // Check Local Storage for saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateIcon(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        }
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // 3. Dynamic Year in Footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 4. Smooth Scroll Handling (Optional Enhancement)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                    
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
