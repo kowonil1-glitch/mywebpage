@@ -191,15 +191,16 @@
         }
         
         /* General Card Style */
-        .card {
+        .card, .horizontal-card { /* <a> 태그에 직접 적용 */
             background-color: var(--card-bg);
             border-radius: 0.75rem;
             overflow: hidden;
             border: 1px solid var(--border-color);
             transition: transform 0.3s, box-shadow 0.3s;
+            display: block; /* <a> 태그를 블록 요소로 만들어 전체 카드 영역을 차지하도록 함 */
         }
 
-        .card:hover {
+        .card:hover, .horizontal-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
@@ -207,7 +208,7 @@
         .card-image {
             width: 100%;
             /* 이미지가 잘리지 않도록 높이 350px 유지 및 object-fit: contain으로 변경 */
-            height: 200px; 
+            height: 350px; 
             object-fit: contain; /* **수정됨:** 이미지가 잘리지 않고 전체가 보이도록 contain으로 변경 */
             background-color: var(--border-color); /* 이미지를 담는 배경색 추가 (contain시 생기는 여백 채우기) */
         }
@@ -538,19 +539,18 @@
             <div class="container">
                 <h2 class="section-title">Energy <span>Insights</span></h2>
                 <div class="post-grid">
-                    <!-- Energy Post 1: 원자력 기초 -->
-                    <article class="card">
+                    <!-- Energy Post 1: 원자력 기초 - 링크 연결 완료 -->
+                    <a href="./energy_nuclear_basic.html" class="card">
                         <!-- 이미지 경로: energy_nuclear_basic.jpg -->
                         <img src="./energy_nuclear_basic.jpg" alt="Nuclear Power Plant" class="card-image">
-                        <a href="./energy_nuclear_basic.html" class="card">...</a>
                         <div class="card-content">
                             <span class="card-date">2023. 12. 25</span>
                             <h3 class="card-title">원자력 발전의 기본 원리</h3>
                             <p class="card-excerpt">핵분열 반응부터 전력 생산까지, 원자력 발전의 핵심 메커니즘을 쉽게 이해합니다.</p>
                         </div>
-                    </article>
-                    <!-- Energy Post 2: 신재생 에너지 -->
-                    <article class="card">
+                    </a>
+                    <!-- Energy Post 2: 신재생 에너지 - 링크 연결 -->
+                    <a href="./energy_renewable_trend.html" class="card">
                         <!-- 이미지 경로: energy_renewable_trend.jpg -->
                         <img src="./energy_renewable_trend.jpg" alt="Solar Panels and Wind Turbines" class="card-image">
                         <div class="card-content">
@@ -558,9 +558,9 @@
                             <h3 class="card-title">태양광과 풍력, 신재생 에너지 동향</h3>
                             <p class="card-excerpt">글로벌 신재생 에너지 시장의 성장세와 기술적 과제를 분석합니다.</p>
                         </div>
-                    </article>
-                    <!-- Energy Post 3: SMR 트렌드 -->
-                    <article class="card">
+                    </a>
+                    <!-- Energy Post 3: SMR 트렌드 - 링크 연결 -->
+                    <a href="./energy_smr_trend.html" class="card">
                         <!-- 이미지 경로: energy_smr_trend.jpg -->
                         <img src="./energy_smr_trend.jpg" alt="Small Modular Reactor Concept" class="card-image">
                         <div class="card-content">
@@ -568,7 +568,7 @@
                             <h3 class="card-title">미래 에너지, SMR(소형모듈원전) 트렌드</h3>
                             <p class="card-excerpt">차세대 원전으로 주목받는 SMR의 기술적 장점과 상용화 전망.</p>
                         </div>
-                    </article>
+                    </a>
                 </div>
             </div>
         </section>
@@ -578,8 +578,8 @@
             <div class="container">
                 <h2 class="section-title">Daily <span>Health</span> Tips</h2>
                 
-                <!-- Health Card 1: 수평 레이아웃 -->
-                <article class="horizontal-card">
+                <!-- Health Card 1: 발효 음식 - 링크 연결 -->
+                <a href="./health_fermented_food.html" class="horizontal-card">
                     <!-- 이미지 경로: health_fermented_food.jpg -->
                     <img src="./health_fermented_food.jpg" alt="Healthy Food Plate" class="horizontal-card-image">
                     <div class="horizontal-card-content">
@@ -587,10 +587,10 @@
                         <p class="card-excerpt">김치, 요거트 등 발효 식품이 장내 미생물 균형에 미치는 긍정적인 영향과 일상 식단에 포함하는 방법.</p>
                         <p style="font-size: 0.875rem; color: var(--primary-color); margin-top: 1rem;">#프로바이오틱스 #식이섬유</p>
                     </div>
-                </article>
+                </a>
 
-                <!-- Health Card 2: 수평 레이아웃 -->
-                <article class="horizontal-card">
+                <!-- Health Card 2: 스트레칭 루틴 - 링크 연결 -->
+                <a href="./health_stretching.html" class="horizontal-card">
                     <!-- 이미지 경로: health_stretching.jpg -->
                     <img src="./health_stretching.jpg" alt="Stretching Exercises" class="horizontal-card-image">
                     <div class="horizontal-card-content">
@@ -598,7 +598,7 @@
                         <p class="card-excerpt">장시간 앉아 있는 직장인을 위한 5분 스트레칭. 목, 어깨, 허리 통증을 예방하는 동작 가이드.</p>
                         <p style="font-size: 0.875rem; color: var(--primary-color); margin-top: 1rem;">#자세교정 #피로해소</p>
                     </div>
-                </article>
+                </a>
             </div>
         </section>
 
@@ -747,7 +747,3 @@
     </script>
 </body>
 </html>
-
-
-
-
