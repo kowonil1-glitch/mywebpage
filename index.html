@@ -207,10 +207,11 @@
 
         .card-image {
             width: 100%;
-            /* 이미지가 잘리지 않도록 높이 350px 유지 및 object-fit: contain으로 변경 */
+            /* 이미지가 잘리지 않도록 높이 350px 유지 */
             height: 350px; 
-            object-fit: contain; /* **수정됨:** 이미지가 잘리지 않고 전체가 보이도록 contain으로 변경 */
-            background-color: var(--border-color); /* 이미지를 담는 배경색 추가 (contain시 생기는 여백 채우기) */
+            /* object-fit: contain -> object-fit: cover 로 수정하여 공백 제거 */
+            object-fit: cover; 
+            background-color: var(--border-color);
         }
 
         .card-content {
@@ -544,7 +545,7 @@
                         <!-- 이미지 경로: energy_nuclear_basic.jpg -->
                         <img src="./energy_nuclear_basic.jpg" alt="Nuclear Power Plant" class="card-image">
                         <div class="card-content">
-                            <span class="card-date">2023. 12. 25</span>
+                            <span class="card-date">2024. 12. 25</span>
                             <h3 class="card-title">원자력 발전의 기본 원리</h3>
                             <p class="card-excerpt">핵분열 반응부터 전력 생산까지, 원자력 발전의 핵심 메커니즘을 쉽게 이해합니다.</p>
                         </div>
