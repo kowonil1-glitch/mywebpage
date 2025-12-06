@@ -207,9 +207,8 @@
 
         .card-image {
             width: 100%;
-            /* 이미지가 잘리지 않도록 높이 350px 유지 */
-            height: 350px; 
-            /* object-fit: contain -> object-fit: cover 로 수정하여 공백 제거 */
+            /* 기존 350px -> 250px로 조정하여 세로 비율을 줄이고 좌우 잘림을 최소화 */
+            height: 250px; 
             object-fit: cover; 
             background-color: var(--border-color);
         }
